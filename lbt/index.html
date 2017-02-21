@@ -10,6 +10,7 @@
 				/*外边距*/
 				padding: 0;
 				/*内边距*/
+				font-size:0;
 			}
 			
 			#list {
@@ -51,7 +52,7 @@
 				<li><img src="img/1.jpg" /></li>
 				<li><img src="img/2.jpg" /></li>
 				<li><img src="img/3.jpg" /></li>
-				<!--<li><img src="img/1.jpg" /></li>-->
+				<li><img src="img/1.jpg"/></li>
 			</ul>
 		</div>
 		<script type="text/javascript" src="js/move.js"></script>
@@ -91,8 +92,8 @@
 			setInterval(function() {
 				startMove(oUl, "top", ddd, function() {
 					//	动画完成
-					if(ddd < -600) {
-						ddd = 0;
+					if(ddd < -900) {
+						ddd = -300;
 						oUl.style.top = 0;
 					}
 				});
