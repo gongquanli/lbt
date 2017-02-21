@@ -1,35 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<title>轮播图展示</title>
 		<style>
-			*{
-				margin:0;		/*外边距*/
-				padding:0;		/*内边距*/
+			* {
+				margin: 0;
+				/*外边距*/
+				padding: 0;
+				/*内边距*/
 			}
-			ul{
-				list-style: none;	/*去除小黑点*/
+			
+			#list {
+				list-style: none;
+				/*去除小黑点*/
+				position: absolute;
+				/*绝对定位*/
+				left: 0;
+				/*左*/
+				top: 0;
+				/*上*/
 			}
-			img{
-				width:600px;		/*宽度*/
-				height:300px;		/*高度*/
+			
+			img {
+				width: 600px;
+				/*宽度*/
+				height: 300px;
+				/*高度*/
 			}
-			#cc{
-				margin: 0 auto;		/*外边距*/
-				width:600px;		/*宽度*/
-				height:300px;		/*高度*/
-				overflow: hidden;	/*隐藏溢出*/
+			
+			#cc {
+				margin: 0 auto;
+				/*外边距*/
+				width: 600px;
+				/*宽度*/
+				height: 300px;
+				/*高度*/
+				overflow: hidden;
+				/*隐藏溢出*/
+				position: relative;
+				/*相对定位*/
 			}
 		</style>
 	</head>
+
 	<body>
 		<div id="cc">
-			<ul>
-				<li><img src="img/1.jpg"/></li>
-				<li><img src="img/2.jpg"/></li>
-				<li><img src="img/3.jpg"/></li>
+			<ul id="list">
+				<li><img src="img/1.jpg" /></li>
+				<li><img src="img/2.jpg" /></li>
+				<li><img src="img/3.jpg" /></li>
+				<!--<li><img src="img/1.jpg" /></li>-->
 			</ul>
 		</div>
+		<script type="text/javascript" src="js/move.js"></script>
+		<!--动画库-->
+		<!-- 轮播代码-->
+		<!--<script>        
+			window.onload = function() {
+				var oUl = document.getElementById('list');
+				var t, o;
+				var speed = 0;
+				var funny = function() {
+					t && clearInterval(t);
+					t = setInterval(function() {
+						speed -= 200 / 11;
+						if(speed < -200) {
+							speed = 0;
+							oUl.appendChild(oUl.children[0]);
+							t && clearInterval(t);
+							t = null;
+							o && clearTimeout(o);
+							o = setTimeout(funny, 1000);
+						}
+						oUl.style.left = speed + "px";
+					}, 60);
+				}
+				funny();
+			}
+		</script>-->
+		<script>
+			//			js程序来写,可以控制页面中的节点
+			var oUl = document.getElementById("list"); //得到ul节点
+			//			oUl.style.top = "-300px";						//改变ul的样式  
+			//			oUl.style.top = "-600px";
+			//startMove(oUl, "top", 900);
+			var ddd = -300;
+			//			定义一个变量
+			setInterval(function() {
+				startMove(oUl, "top", ddd, function() {
+					//	动画完成
+					if(ddd < -600) {
+						ddd = 0;
+						oUl.style.top = 0;
+					}
+				});
+				//	如果位置小于-900，说明到了第四张图片，那么顺便回到0
+				ddd = ddd - 300;
+				// 改变图片的位置
+			}, 3000);
+		</script>
 	</body>
+
 </html>
